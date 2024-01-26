@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+require('dotenv').config(); // Env contains API key
 
 function App() {
   return (
