@@ -63,6 +63,7 @@ export interface IStationData {
 /**
  * @class SynAPI
  * @description Gets weather station data from the synoptic API
+ * @see https://docs.synopticdata.com/services/time-series
  */
 export class SynAPI {
   
@@ -72,6 +73,26 @@ export class SynAPI {
    */
   private static TOKEN: string = process.env.REACT_APP_SYN_TOKEN || '';
 
+  /**
+   * @property API_URL
+   * @description The Synoptic API URL
+   */
+  private static API_URL: string = 'https://api.synopticdata.com/v2/stations/timeseries';
+
+  /**
+   * Converts the date to UTC and
+   * outputs it in the synoptic API format:
+   * YYYYmmddHHMM
+   * @param date 
+   */
+  private static dateToSynFormat(date: Date): string {
+    return date.getUTCFullYear().toString() +
+      (date.getUTCMonth() + 1).toString().padStart(2, '0') +
+      date.getUTCDate().toString().padStart(2, '0') +
+      date.getUTCHours().toString().padStart(2, '0') +
+      date.getUTCMinutes().toString().padStart(2, '0');
+  }
+  
   /**
    * @function convertSynData
    * @description Converts data from the synoptic API to the IStationData format
@@ -92,7 +113,12 @@ export class SynAPI {
   static getStationData(start: Date, 
                         end: Date, 
                         stationID: string, 
-                        settings: UnitSettings) {
+                        settings: UnitSettings): IStationData | null {
+    // Convert dates to strings with format YYYYmmddHHMM
 
+    const url: string = this.API_URL + 
+      "?token=" + this.TOKEN;
+
+    return null; // TODO: change return type of function
   }
 }

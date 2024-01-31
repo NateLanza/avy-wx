@@ -4,6 +4,7 @@ import { SynAPI } from './classes/SynAPI';
 import './App.css';
 
 function App() {
+
   return (
     <div className="App">
       <header className="App-header">
