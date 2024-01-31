@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
+import { SynAPI } from './classes/SynAPI';
 import './App.css';
 
 function App() {
